@@ -1,0 +1,36 @@
+<div class="container px-5 my-5">
+  <form id="" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <h4>Đăng nhập</h4>
+    {{ errors?.message }}
+    <div class="mb-3">
+      <label class="form-label" for="email">Email</label>
+      <input
+        class="form-control"
+        ngModel
+        name="email"
+        id="email"
+        type="email"
+        placeholder="Email"
+      />
+      <div>{{ errors?.email }}</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Mật khẩu</label>
+      <input
+        class="form-control"
+        ngModel
+        name="password"
+        id="password"
+        type="password"
+        placeholder="Mật khẩu"
+      />
+      <div class="">{{ errors?.password }}.</div>
+    </div>
+
+    <div class="d-grid">
+      <button class="btn btn-primary btn-lg" id="submitButton" type="submit">
+        Gửi
+      </button>
+    </div>
+  </form>
+</div>

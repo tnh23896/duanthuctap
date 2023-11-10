@@ -1,0 +1,302 @@
+<div class="mb-5" *ngIf="isAddForm">
+  <form action="" (ngSubmit)="onSubmitAdd()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="" class="form-label">title</label>
+      <input
+        type="text"
+        [(ngModel)]="title"
+        name="title"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.title
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="author_id" class="form-label">tác giả</label>
+      <select
+        class="form-select form-select-sm"
+        [(ngModel)]="author_id"
+        name="author_id"
+        id="author_id"
+      >
+        <option value="" selected>Select one</option>
+        <option *ngFor="let author of authors" [value]="author.id">
+          {{ author.name }}
+        </option>
+      </select>
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.author_id
+      }}</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="genre_id" class="form-label">Thể loại</label>
+      <select
+        class="form-select form-select-sm"
+        [(ngModel)]="genre_id"
+        name="genre_id"
+        id="genre_id"
+      >
+        <option value="" selected>Select one</option>
+        <option *ngFor="let genre of genres" [value]="genre.id">
+          {{ genre.name }}
+        </option>
+      </select>
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.genre_id
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="category_id" class="form-label">Danh mục</label>
+      <select
+        class="form-select form-select-sm"
+        [(ngModel)]="category_id"
+        name="category_id"
+        id="category_id"
+      >
+        <option value="" selected>Select one</option>
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.category_id
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="promotion_id" class="form-label">Giảm giá</label>
+      <select
+        class="form-select form-select-sm"
+        [(ngModel)]="promotion_id"
+        name="promotion_id"
+        id="promotion_id"
+      >
+        <option value="" selected>Select one</option>
+        <option *ngFor="let promotion of promotions" [value]="promotion.id">
+          {{ promotion.name }}
+        </option>
+        <small id="helpId" class="form-text text-danger">{{
+          errors?.promotion_id
+        }}</small>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">image</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.image
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Mô tả</label>
+      <textarea
+        class="form-control"
+        name="description"
+        [(ngModel)]="description"
+        id=""
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">price</label>
+      <input
+        type="text"
+        [(ngModel)]="price"
+        name="price"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.price
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">quantity</label>
+      <input
+        type="text"
+        [(ngModel)]="quantity"
+        name="quantity"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.quantity
+      }}</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="mb-5" *ngIf="isEditForm">
+  <form action="" (ngSubmit)="onSubmitEdit()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="" class="form-label">title</label>
+      <input
+        type="text"
+        [(ngModel)]="title"
+        name="title"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.title
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="author_id" class="form-label">tác giả</label>
+      <select
+        class="form-select form-select-sm"
+        [(ngModel)]="author_id"
+        name="author_id"
+        id="author_id"
+      >
+        <option selected>Select one</option>
+        <option *ngFor="let author of authors" [value]="author.id">
+          {{ author.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="genre_id" class="form-label">Thể loại</label>
+      <select
+        class="form-select form-select-sm"
+        [(ngModel)]="genre_id"
+        name="genre_id"
+        id="genre_id"
+      >
+        <option selected>Select one</option>
+        <option *ngFor="let genre of genres" [value]="genre.id">
+          {{ genre.name }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="category_id" class="form-label">Danh mục</label>
+      <select
+        class="form-select form-select-sm"
+        [(ngModel)]="category_id"
+        name="category_id"
+        id="category_id"
+      >
+        <option selected>Select one</option>
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="promotion_id" class="form-label">Giảm giá</label>
+      <select
+        class="form-select form-select-sm"
+        [(ngModel)]="promotion_id"
+        name="promotion_id"
+        id="promotion_id"
+      >
+        <option selected>Select one</option>
+        <option *ngFor="let promotion of promotions" [value]="promotion.id">
+          {{ promotion.name }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-2">
+      <img [src]="imgSrc" width="100" alt="" />
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">image</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.image
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Mô tả</label>
+      <textarea
+        class="form-control"
+        name="description"
+        [(ngModel)]="description"
+        id=""
+        rows="3"
+      ></textarea>
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.description
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">price</label>
+      <input
+        type="text"
+        [(ngModel)]="price"
+        name="price"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.price
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">quantity</label>
+      <input
+        type="text"
+        [(ngModel)]="quantity"
+        name="quantity"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.quantity
+      }}</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button (click)="cancelEdit()" type="button" class="btn btn-primary">
+      Cancel
+    </button>
+  </form>
+</div>
+<button (click)="displayFormAdd()" class="btn btn-primary">Form thêm</button>
+<div class="row my-5">
+  <h3 class="fs-4 mb-3">Recent Orders</h3>
+  <div class="col">
+    <table class="table bg-white rounded shadow-sm table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="50">#</th>
+          <th scope="col">Tiêu đề</th>
+          <th scope="col">Tác giả</th>
+          <th scope="col">Thể loại</th>
+          <th scope="col">Danh mục</th>
+          <th scope="col">Giảm giá</th>
+          <th scope="col">Ảnh</th>
+          <th scope="col">Giá</th>
+          <th scope="col">Số lượng</th>
+          <th scope="col">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <th scope="row">{{ book.id }}</th>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author.name }}</td>
+          <td>{{ book.genre.name }}</td>
+          <td>{{ book.category.name }}</td>
+          <td>{{ book.promotion?.discount ?? 0 }}</td>
+          <td><img [src]="imgUrl + book.image" width="100" height="100" /></td>
+          <td>{{ book.price }}</td>
+          <td>{{ book.quantity }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="displayEditForm(book)">
+              Sửa
+            </button>
+            <button class="btn btn-danger" (click)="onDelete(book.id)">
+              Xóa
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

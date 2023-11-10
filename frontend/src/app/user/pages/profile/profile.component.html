@@ -1,0 +1,94 @@
+<form class="container py-3" (ngSubmit)="onSubmit()">
+  <div>
+    <h3>Quản lý thông tin cá nhân</h3>
+  </div>
+  <input
+    type="hidden"
+    name="user_id"
+    [(ngModel)]="userId"
+    [value]="user?.id"
+    name="user_id"
+  />
+  <div class="row">
+    <div class="mb-3">
+      <img [src]="imgSrc" width="100" alt="Selected Image" />
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Ảnh đại diện</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.file
+      }}</small>
+    </div>
+    <div class="col-6 mb-3">
+      <p class="mb-0">Họ tên</p>
+      <div class="form-outline">
+        <input
+          type="text"
+          id="typeText"
+          [value]="user?.name"
+          placeholder="Type here"
+          class="form-control"
+          [(ngModel)]="name"
+          name="name"
+        />
+      </div>
+      <small class="form-text text-danger">{{ errors?.name }}</small>
+    </div>
+
+    <div class="col-6">
+      <p class="mb-0">Địa chỉ</p>
+      <div class="form-outline">
+        <input
+          type="text"
+          [value]="user?.address"
+          id="typeText"
+          placeholder="Type here"
+          class="form-control"
+          [(ngModel)]="address"
+          name="address"
+        />
+        <small class="form-text text-danger">{{ errors?.address }}</small>
+      </div>
+    </div>
+
+    <div class="col-6 mb-3">
+      <p class="mb-0">Điện thoại</p>
+      <div class="form-outline">
+        <input
+          type="tel"
+          id="typePhone"
+          [value]="user?.phone"
+          class="form-control"
+          [(ngModel)]="phone"
+          name="phone"
+        />
+        <small class="form-text text-danger">{{ errors?.phone }}</small>
+      </div>
+    </div>
+
+    <div class="col-6 mb-3">
+      <p class="mb-0">Email</p>
+      <div class="form-outline">
+        <input
+          type="email"
+          id="typeEmail"
+          [value]="user?.email"
+          placeholder="example@gmail.com"
+          class="form-control"
+          [(ngModel)]="email"
+          name="email"
+        />
+      </div>
+      <small class="form-text text-danger">{{ errors?.email }}</small>
+    </div>
+  </div>
+
+    <button class="btn btn-success shadow-0 border">
+      Lưu thông tin
+    </button>
+</form>

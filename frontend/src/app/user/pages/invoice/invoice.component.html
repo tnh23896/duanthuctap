@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row my-5">
+    <h3 class="fs-4 mb-3">Recent Orders</h3>
+    <div class="col">
+      <table class="table bg-white rounded shadow-sm table-hover">
+        <thead>
+          <tr>
+            <th scope="col" width="50">#</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Điện thoại</th>
+            <th scope="col">Địa điểm</th>
+            <th scope="col">Tổng tiền</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Ngày đặt</th>
+            <th scope="col">Chi tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let invoice of invoices">
+            <th scope="row">{{ invoice.id }}</th>
+            <td>{{ invoice.name }}</td>
+            <td>{{ invoice.phone }}</td>
+            <td>{{ invoice.address }}</td>
+            <td>{{ invoice.total }}</td>
+            <td>
+              <span class="bg-info text-white p-2" *ngIf="invoice.status == 1"
+                >Chuẩn bị</span
+              >
+              <span
+                class="bg-warning text-white p-2"
+                *ngIf="invoice.status == 2"
+                >Đang giao</span
+              >
+              <span
+                class="bg-success text-white p-2"
+                *ngIf="invoice.status == 3"
+                >Đã giao</span
+              >
+              <span class="bg-danger text-white p-2" *ngIf="invoice.status == 4"
+                >Đã huỷ</span
+              >
+            </td>
+            <td>{{ invoice.date }}</td>
+            <td><a routerLink="/invoice/{{ invoice.id }}">Chi tiết</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

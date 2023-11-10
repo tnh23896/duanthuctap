@@ -1,0 +1,162 @@
+<div class="mb-5" *ngIf="isAddForm">
+  <form action="" (ngSubmit)="onSubmitAdd()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="" class="form-label">name</label>
+      <input type="text" [(ngModel)]="name" name="name" class="form-control" />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.name
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Mô tả</label>
+      <input
+        type="text"
+        [(ngModel)]="description"
+        name="description"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.description
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">giảm giá</label>
+      <input
+        type="text"
+        [(ngModel)]="discount"
+        name="discount"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.discount
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Ngày bắt đầu</label>
+      <input
+        type="date"
+        [(ngModel)]="start_date"
+        name="start_date"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.start_date
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Ngày kết thúc</label>
+      <input
+        type="date"
+        [(ngModel)]="end_date"
+        name="end_date"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.end_date
+      }}</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="mb-5" *ngIf="isEditForm">
+  <form action="" (ngSubmit)="onSubmitEdit()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="" class="form-label">name</label>
+      <input type="text" [(ngModel)]="name" name="name" class="form-control" />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.name
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Mô tả</label>
+      <input
+        type="text"
+        [(ngModel)]="description"
+        name="description"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.description
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">giảm giá</label>
+      <input
+        type="text"
+        [(ngModel)]="discount"
+        name="discount"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.discount
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Ngày bắt đầu</label>
+      <input
+        type="date"
+        [(ngModel)]="start_date"
+        name="start_date"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.start_date
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Ngày kết thúc</label>
+      <input
+        type="date"
+        [(ngModel)]="end_date"
+        name="end_date"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.end_date
+      }}</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button (click)="cancelEdit()" type="button" class="btn btn-primary">
+      Cancel
+    </button>
+  </form>
+</div>
+<button (click)="displayFormAdd()" class="btn btn-primary">Form thêm</button>
+<div class="row my-5">
+  <h3 class="fs-4 mb-3">Recent Orders</h3>
+  <div class="col">
+    <table class="table bg-white rounded shadow-sm table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="50">#</th>
+          <th scope="col">Tên</th>
+          <th>mô tả</th>
+          <th>giảm giá</th>
+          <th>ngày bắt đầu</th>
+          <th>ngày kết thúc</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let promotion of promotions">
+          <th scope="row">{{ promotion.id }}</th>
+          <td>{{ promotion.name }}</td>
+          <td>{{ promotion.description }}</td>
+          <td>{{ promotion.discount }}</td>
+          <td>{{ promotion.start_date }}</td>
+          <td>{{ promotion.end_date }}</td>
+          <td>
+            <button
+              class="btn btn-primary"
+              (click)="displayEditForm(promotion)"
+            >
+              Sửa
+            </button>
+            <button class="btn btn-danger" (click)="onDelete(promotion.id)">
+              Xóa
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

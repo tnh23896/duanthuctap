@@ -1,0 +1,44 @@
+<div class="row g-3 my-2">
+  <div class="col-md-4">
+    <div
+      class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded"
+    >
+      <div>
+        <h3 class="fs-2">{{ data?.countBooks }}</h3>
+        <p class="fs-5">Sản phẩm</p>
+      </div>
+      <i
+        class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"
+      ></i>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div
+      class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded"
+    >
+      <div>
+        <h3 class="fs-2">{{ data?.totalSoldProducts }}</h3>
+        <p class="fs-5">Số lượng đã bán</p>
+      </div>
+      <i
+        class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"
+      ></i>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div
+      class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded"
+    >
+      <div>
+        <h3 class="fs-2">{{ data?.totalDeliveredProducts }}</h3>
+        <p class="fs-5">Số lượng đã giao</p>
+      </div>
+      <i
+        class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"
+      ></i>
+    </div>
+  </div>
+</div>
+<canvas id="myChart"></canvas>

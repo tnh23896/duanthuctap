@@ -1,0 +1,31 @@
+<div class="row my-5">
+  <h3 class="fs-4 mb-3">Recent Orders</h3>
+  <div class="col">
+    <table class="table bg-white rounded shadow-sm table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="50">#</th>
+          <th scope="col">Tiêu đề sách</th>
+          <th scope="col">Hình ảnh</th>
+          <th scope="col">Giá</th>
+          <th scope="col">Khuyến mại giảm còn</th>
+          <th scope="col">Số lượng</th>
+          <th scope="col">Tổng giá</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of invoiceDetail">
+          <td>{{ book.id }}</td>
+          <td>{{ book.book_name }}</td>
+          <td>
+            <img width="50" [src]="imgBaseUrl + book.book_image" alt="" />
+          </td>
+          <td>{{ book.price }}</td>
+          <td>{{ book.discount }}</td>
+          <td>{{ book.quantity }}</td>
+          <td>{{ caculateTotalPriceOfAnItem(book) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="row my-5">
+  <h3 class="fs-4 mb-3">Recent Orders</h3>
+  <div class="col">
+    <table class="table bg-white rounded shadow-sm table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="50">#</th>
+          <th scope="col">Tên</th>
+          <th scope="col">Email</th>
+          <th scope="col">Địa chỉ</th>
+          <th scope="col">SĐT</th>
+          <th scope="col">Quyền</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <th scope="row">{{ user.id }}</th>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.role == "admin" ? "Admin" : "User" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

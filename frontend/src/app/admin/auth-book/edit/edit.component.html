@@ -1,0 +1,17 @@
+<form action="" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      [(ngModel)]="name"
+      [value]="name"
+      id=""
+      aria-describedby="helpId"
+      placeholder=""
+    />
+    <small id="helpId" class="form-text text-danger">{{ errors?.name }}</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

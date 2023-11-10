@@ -1,0 +1,66 @@
+<div class="container mt-3">
+  <h3 class="fs-4 mb-3">Chi tiết hoá đơn</h3>
+
+  <ul class="list-group">
+    <li class="list-group-item">Mã đơn hàng: {{ invoice.id }}</li>
+    <li class="list-group-item">Tên người đặt hàng: {{ invoice.name }}</li>
+    <li class="list-group-item">Số điện thoại: {{ invoice.phone }}</li>
+    <li class="list-group-item">Địa chỉ nhận hàng: {{ invoice.address }}</li>
+    <li class="list-group-item">Tổng tiền {{ invoice.total }}</li>
+    <li class="list-group-item">
+      Trạng thái đơn hàng:
+      <span class="bg-info text-white rounded p-2" *ngIf="invoice.status == 1"
+        >Chuẩn bị</span
+      >
+      <span
+        class="bg-warning text-white rounded p-2"
+        *ngIf="invoice.status == 2"
+        >Đang giao</span
+      >
+      <span
+        class="bg-success text-white rounded p-2"
+        *ngIf="invoice.status == 3"
+        >Đã giao</span
+      >
+      <span class="bg-danger text-white rounded p-2" *ngIf="invoice.status == 4"
+        >Đã huỷ</span
+      >
+    </li>
+    <li class="list-group-item">
+      Ngày đặt hàng: {{ invoice.date | date: "dd/MM/yyyy" }}
+    </li>
+  </ul>
+</div>
+<div class="container">
+  <div class="row my-5">
+    <h3 class="fs-4 mb-3">Các sản phẩm</h3>
+    <div class="col">
+      <table class="table bg-white rounded shadow-sm table-hover">
+        <thead>
+          <tr>
+            <th scope="col" width="50">#</th>
+            <th scope="col">Tiêu đề sách</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Khuyến mại giảm còn</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Tổng giá</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of invoiceDetail">
+            <td>{{ book.id }}</td>
+            <td>{{ book.book_name }}</td>
+            <td>
+              <img width="50" [src]="imgBaseUrl + book.book_image" alt="" />
+            </td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.discount }}</td>
+            <td>{{ book.quantity }}</td>
+            <td>{{ caculateTotalPriceOfAnItem(book) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<nav
+  class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm"
+>
+  <div class="container">
+    <a class="navbar-brand" routerLink="/"
+      ><i class="fa-solid fa-shop me-2"></i> <strong>GEAR SHOP</strong></a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
+      <div class="input-group">
+        <span class="border-warning input-group-text bg-warning text-white"
+          ><i class="fa-solid fa-magnifying-glass"></i
+        ></span>
+        <input
+          type="text"
+          class="form-control border-warning"
+          style="color: #7a7a7a"
+        />
+        <button class="btn btn-warning text-white">Search</button>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="ms-auto d-none d-lg-block">
+        <div class="input-group">
+          <span class="border-warning input-group-text bg-warning text-white"
+            ><i class="fa-solid fa-magnifying-glass"></i
+          ></span>
+          <input
+            type="text"
+            class="form-control border-warning"
+            style="color: #7a7a7a"
+            [(ngModel)]="search"
+          />
+          <button (click)="searchBook()" type="button" class="btn btn-warning text-white">Tìm kiếm</button>
+        </div>
+      </div>
+      <ul *ngIf="!user" class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link mx-2 text-uppercase"
+            [routerLink]="['/login']"
+            routerLinkActive="active"
+            >Đăng nhập</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link mx-2 text-uppercase"
+            [routerLink]="['/register']"
+            routerLinkActive="active"
+            >Đăng ký</a
+          >
+        </li>
+      </ul>
+      <ul *ngIf="user" class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <button
+            class="nav-link mx-2 text-uppercase"
+            [routerLink]="['/invoice']"
+            routerLinkActive="active"
+          >
+            Thông tin đơn hàng
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link mx-2 text-uppercase" (click)="logout()">
+            Đăng xuất
+          </button>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link mx-2 text-uppercase"
+            [routerLink]="['/cart']"
+            routerLinkActive="active"
+            ><i class="fa-solid fa-cart-shopping me-1"></i> Giỏ hàng</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="user">
+          <a class="nav-link mx-2 text-uppercase" routerLink="/profile"
+            ><img
+              width="30"
+              height="30"
+              class="rounded-circle"
+              [src]="imgBase + user?.avatar"
+              alt=""
+            />{{ user?.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

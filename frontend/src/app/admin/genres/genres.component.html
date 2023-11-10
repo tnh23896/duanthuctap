@@ -1,0 +1,55 @@
+<div class="mb-5" *ngIf="isAddForm">
+  <form action="" (ngSubmit)="onSubmitAdd()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="" class="form-label">name</label>
+      <input type="text" [(ngModel)]="name" name="name" class="form-control" />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.name
+      }}</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="mb-5" *ngIf="isEditForm">
+  <form action="" (ngSubmit)="onSubmitEdit()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="" class="form-label">name</label>
+      <input type="text" [(ngModel)]="name" name="name" class="form-control" />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.name
+      }}</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button (click)="cancelEdit()" type="button" class="btn btn-primary">
+      Cancel
+    </button>
+  </form>
+</div>
+<button (click)="displayFormAdd()" class="btn btn-primary">Form thêm</button>
+<div class="row my-5">
+  <h3 class="fs-4 mb-3">Recent Orders</h3>
+  <div class="col">
+    <table class="table bg-white rounded shadow-sm table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="50">#</th>
+          <th scope="col">Tên</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let genre of genres">
+          <th scope="row">{{ genre.id }}</th>
+          <td>{{ genre.name }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="displayEditForm(genre)">
+              Sửa
+            </button>
+            <button class="btn btn-danger" (click)="onDelete(genre.id)">
+              Xóa
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

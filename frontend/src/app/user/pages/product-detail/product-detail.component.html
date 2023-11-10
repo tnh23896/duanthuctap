@@ -1,0 +1,135 @@
+<div *ngIf="!error; else notFound">
+  <!-- content -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row gx-5">
+        <aside class="col-lg-6">
+          <div class="border rounded-4 mb-3 d-flex justify-content-center">
+            <a class="rounded-4">
+              <img *ngIf="book?.image" style="max-width: 100%; max-height: 100vh; margin: auto"
+                class="rounded-4 fit" [src]="imgUrl + book?.image" />
+            </a>
+          </div>
+
+          <!-- thumbs-wrap.// -->
+          <!-- gallery-wrap .end// -->
+        </aside>
+        <main class="col-lg-6">
+          <div class="ps-lg-3">
+            <h4 class="title text-dark">
+              {{ book?.title }}
+            </h4>
+            <div class="d-flex flex-row my-3">
+              <div class="text-warning mb-1 me-2">
+                <app-star-average [book]="book"></app-star-average>
+              </div>
+              <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>{{
+                book?.quantity }} orders</span>
+              <span class="text-success ms-2">In stock</span>
+            </div>
+
+            <div class="mb-3">
+              <span class="h5">{{ book?.promotion?.discount ?? book?.price }}đ
+                <div class="text-muted text-decoration-line-through">
+                  {{ book?.promotion?.discount ? book?.price : "" }}
+                </div>
+              </span>
+              <span class="text-muted">/sản phẩm</span>
+            </div>
+
+            <div class="row">
+              <dt class="col-3">Danh mục:</dt>
+              <dd class="col-9">{{ book?.category?.name }}</dd>
+
+              <dt class="col-3">Thể loại</dt>
+              <dd class="col-9">{{ book?.genre.name }}</dd>
+
+              <dt class="col-3">Tác giả</dt>
+              <dd class="col-9">{{ book?.author?.name }}</dd>
+
+              <dt class="col-3">Giảm giá còn</dt>
+              <dd class="col-9">{{ book?.promotion?.discount }}</dd>
+            </div>
+            <hr />
+
+            <div class="row mb-4">
+              <!-- col.// -->
+              <div class="col-md-4 col-6 mb-3">
+                <label class="mb-2 d-block">Số lượng</label>
+                <div class="input-group mb-3" style="width: 170px">
+                  <button class="btn btn-white border border-secondary px-3" type="button"
+                    id="button-addon1" data-mdb-ripple-color="dark" (click)="decrease()">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input type="text" class="form-control text-center border border-secondary"
+                    placeholder="14" aria-label="Example text with button addon"
+                    aria-describedby="button-addon1" value="1" [(ngModel)]="quantity" />
+                  <button class="btn btn-white border border-secondary px-3" type="button"
+                    id="button-addon2" data-mdb-ripple-color="dark" (click)="increase()">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <button (click)="addToCart()" type="button" class="btn btn-primary shadow-0 mx-2">
+              <i class="me-1 fa fa-shopping-basket"></i> Add to cart
+            </button>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+  <!-- content -->
+
+  <section class="bg-light border-top py-4">
+    <div class="container">
+      <div class="row gx-4">
+        <div class="col-lg-8 mb-4">
+          <div class="border rounded-2 px-3 py-2 bg-white">
+            <h3>Mô tả</h3>
+            <!-- Pills content -->
+            <div class="tab-content" id="ex1-content">
+              <div class="tab-pane fade show active" id="ex1-pills-1" role="tabpanel"
+                aria-labelledby="ex1-tab-1">
+                <p>
+                  {{ book?.description }}
+                </p>
+              </div>
+            </div>
+            <!-- Pills content -->
+          </div>
+          <app-ratings [ratings]="book?.ratings" [bookId]="book?.id"></app-ratings>
+        </div>
+        <div class="col-lg-4">
+          <div class="px-0 border rounded-2 shadow-0">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Sản phẩm tương tự</h5>
+                <a class="d-flex flex-row gap-2 mb-3 text-decoration-none" style="cursor: pointer"
+                  *ngFor="let similarbook of similarBooks"
+                  [routerLink]="['/product', similarbook.id]" (click)="goToDetail(similarbook)">
+                  <div class="me-3">
+                    <img *ngIf="similarbook?.image" [src]="imgUrl + similarbook?.image"
+                      style="min-width: 96px; height: 96px" class="img-md img-thumbnail" />
+                  </div>
+                  <div class="info">
+                    <div class="d-block mb-1">
+                      {{ similarbook?.title }} <br />
+                      {{ similarbook?.author?.name }}
+                    </div>
+                    <strong class="text-dark">{{
+                      similarbook?.promotion?.discount ?? similarbook?.price
+                      }}</strong>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<ng-template #notFound>
+  <app-not-found></app-not-found>
+</ng-template>

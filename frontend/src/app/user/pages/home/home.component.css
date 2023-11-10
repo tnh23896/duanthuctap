@@ -1,0 +1,65 @@
+.product-container {
+  position: relative;
+}
+.product-list {
+  display: flex;
+  scroll-behavior: smooth;
+
+  flex-wrap: nowrap;
+}
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.prev-btn {
+  left: 0;
+  
+}
+.next-btn {
+  right: 0;
+}
+
+/* Màn hình lớn - hiển thị 5 sản phẩm */
+@media (min-width: 1200px) {
+  .product {
+    flex: 0 0 20%; 
+    max-width: 20%;
+  }
+  .product-list {
+  overflow: hidden;
+  }
+}
+
+/* Màn hình vừa - 4 sản phẩm */  
+@media (max-width: 1199px) {
+  .product {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .product-list {
+    overflow: auto;
+  }
+  
+  .next-btn,.prev-btn {
+    display: none;
+  }
+}
+/* Điện thoại - hiển thị 2 sản phẩm */
+@media (max-width: 767px) {
+  .product {
+  flex: 0 0 45%;
+  max-width: 45%;
+  }
+  .product-list {
+    overflow: auto;
+  }
+  .next-btn,.prev-btn {
+    display: none;
+  }
+  }
+
+
+
+

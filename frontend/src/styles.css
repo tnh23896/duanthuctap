@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+.bg-primary-color {
+  background-color: #fcdab0;
+}
+a{
+  text-decoration: none;
+  color: black;
+}

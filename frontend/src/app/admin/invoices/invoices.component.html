@@ -1,0 +1,51 @@
+<div class="row my-5">
+  <h3 class="fs-4 mb-3">Recent Orders</h3>
+  <div class="col">
+    <table class="table bg-white rounded shadow-sm table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="50">#</th>
+          <th scope="col">Tên</th>
+          <th scope="col">Điện thoại</th>
+          <th scope="col">Địa điểm</th>
+          <th scope="col">Tổng tiền</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Ngày đặt</th>
+          <th scope="col">Chi tiết</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invoice of invoices">
+          <th scope="row">{{ invoice.id }}</th>
+          <td>{{ invoice.name }}</td>
+          <td>{{ invoice.phone }}</td>
+          <td>{{ invoice.address }}</td>
+          <td>{{ invoice.total }}</td>
+          <td>
+            <form>
+              <select
+                (change)="onStatusChange($event, invoice.id)"
+                name="status"
+              >
+                <option value="1" [selected]="invoice.status == 1">
+                  Chuẩn bị
+                </option>
+                <option value="2" [selected]="invoice.status == 2">
+                  Đang giao
+                </option>
+                <option value="3" [selected]="invoice.status == 3">
+                  Đã giao
+                </option>
+                <option value="4" [selected]="invoice.status == 4">
+                  Đã huỷ
+                </option>
+              </select>
+            </form>
+          </td>
+          <td>{{ invoice.date }}</td>
+          <td><a routerLink="/admin/invoices/{{ invoice.id }}">Chi tiết</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

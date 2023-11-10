@@ -1,0 +1,15 @@
+form{
+  width: 500px;
+  margin: 0 auto;
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+
+/* resize the form */
+@media screen and (max-width: 600px) {
+  form {
+    width: 100%;
+  }
+  
+}

@@ -1,0 +1,17 @@
+<form class="bg-white p-3 rounded" #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <!-- Text input -->
+  <div class="form-outline mb-4">
+    <input
+      type="text"
+      id="form6Example4"
+      name="name"
+      ngModel
+      class="form-control"
+    />
+    <label class="form-label" for="form6Example4">Tên tác giả</label>
+    <div class="text-danger">{{ errors.name }}</div>
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary w-100 mb-4">Place order</button>
+</form>

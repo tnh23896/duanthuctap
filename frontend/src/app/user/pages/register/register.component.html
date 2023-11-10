@@ -1,0 +1,81 @@
+<div class="container px-5 my-5">
+  <form (ngSubmit)="onSubmit()">
+    <h4>Đăng ký</h4>
+    {{ errors?.message }}
+    <div class="mb-3">
+      <label class="form-label" for="name">Tên</label>
+      <input
+        class="form-control"
+        name="name"
+        id="name"
+        [(ngModel)]="name"
+        type="text"
+        placeholder="Tên hiển thị"
+      />
+      <div>{{ errors?.name }}</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="email">Email</label>
+      <input
+        class="form-control"
+        name="email"
+        id="email"
+        type="email"
+        [(ngModel)]="email"
+        placeholder="Email"
+      />
+      <div>{{ errors?.email }}</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Mật khẩu</label>
+      <input
+        class="form-control"
+        name="password"
+        id="password"
+        type="password"
+        [(ngModel)]="password"
+        placeholder="Mật khẩu"
+      />
+      <div class="">{{ errors?.password }}.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Avatar</label>
+      <input
+        type="file"
+        class="form-control"
+        name="avatar"
+        id="avatar"
+        (change)="onFileSelected($event)"
+      />
+      <div class="form-text">{{ errors?.avatar }}</div>
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Số điện thoại</label>
+      <input
+        type="text"
+        class="form-control"
+        name="phone"
+        id="phone"
+        [(ngModel)]="phone"
+        placeholder=""
+      />
+      <small class="form-text text-muted">{{ errors?.phone }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Địa chỉ</label>
+      <textarea
+        class="form-control"
+        name="address"
+        id="address"
+        [(ngModel)]="address"
+        rows="2"
+      ></textarea>
+    </div>
+    <div class="d-grid">
+      <button class="btn btn-primary btn-lg" id="submitButton" type="submit">
+        Gửi
+      </button>
+    </div>
+  </form>
+</div>

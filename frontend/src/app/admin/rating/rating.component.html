@@ -1,0 +1,23 @@
+<div class="row my-5">
+  <h3 class="fs-4 mb-3">Recent Orders</h3>
+  <div class="col">
+    <table class="table bg-white rounded shadow-sm table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="50">#</th>
+          <th scope="col">Tên</th>
+          <th scope="col">tên sách</th>
+          <th scope="col">bình luận</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rating of ratings">
+          <th scope="row">{{ rating.id }}</th>
+          <td>{{ rating.user.name }}</td>
+          <td>{{ rating.book.title }}</td>
+          <td>{{ rating.comment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

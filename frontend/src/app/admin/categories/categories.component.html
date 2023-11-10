@@ -1,0 +1,84 @@
+<div class="mb-5" *ngIf="isAddForm">
+  <form action="" (ngSubmit)="onSubmitAdd()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="" class="form-label">image</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.image
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">name</label>
+      <input type="text" [(ngModel)]="name" name="name" class="form-control" />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.name
+      }}</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="mb-5" *ngIf="isEditForm">
+  <form action="" (ngSubmit)="onSubmitEdit()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <img [src]="imgSrc" width="100" alt="" />
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">image</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        class="form-control"
+      />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.image
+      }}</small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">name</label>
+      <input type="text" [(ngModel)]="name" name="name" class="form-control" />
+      <small id="helpId" class="form-text text-danger">{{
+        errors?.name
+      }}</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button (click)="cancelEdit()" type="button" class="btn btn-primary">
+      Cancel
+    </button>
+  </form>
+</div>
+<button (click)="displayFormAdd()" class="btn btn-primary">Form thêm</button>
+<div class="row my-5">
+  <h3 class="fs-4 mb-3">Recent Orders</h3>
+  <div class="col">
+    <table class="table bg-white rounded shadow-sm table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="50">#</th>
+          <th scope="col">Ảnh</th>
+          <th scope="col">Tên</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories">
+          <th scope="row">{{ category.id }}</th>
+          <td>
+            <img [src]="imgUrl + category.image" width="100" height="100" />
+          </td>
+          <td>{{ category.name }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="displayEditForm(category)">
+              Sửa
+            </button>
+            <button class="btn btn-danger" (click)="onDelete(category.id)">
+              Xóa
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

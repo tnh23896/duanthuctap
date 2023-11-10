@@ -1,0 +1,84 @@
+<div class="container pt-3">
+  <app-carousel></app-carousel>
+  <!-- category -->
+
+  <div class="my-3 bg-white">
+    <div class="pt-2 pb-1 ps-3 bg-primary-color">
+      <span class="fs-5 d-flex align-items-center gap-2" style="font-weight: 600"><img
+          src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_flashsale@3x.png" width="30"
+          alt="" />FLASH SALE</span>
+    </div>
+    <div class="product-container py-2 gy-3">
+      <div class="product-list py-3" [scrollLeft]="scrollPos">
+        <div *ngFor="let book of booksSale" class="product">
+          <app-product-item [book]="book"></app-product-item>
+        </div>
+      </div>
+      <span class="p-3 prev-btn rounded-circle text-muted fs-3" (click)="prev()"><i
+          class="fa-solid fa-chevron-left"></i></span>
+
+      <span class="p-3 next-btn rounded-circle text-muted fs-3" (click)="next()"><i
+          class="fa-solid fa-chevron-right"></i></span>
+    </div>
+  </div>
+
+  <div class="mt-3 bg-white">
+    <div class="pt-2 pb-1 ps-3">
+      <span class="fs-5 d-flex align-items-center gap-2" style="font-weight: 600"><i
+          class="fa-solid fa-layer-group" style="color: #3e63a3"></i> Danh
+        mục</span>
+    </div>
+    <hr class="hr" />
+
+    <!-- category -->
+    <section>
+      <div class="container">
+        <nav class="row gy-4">
+          <div class="col-12">
+            <div class="row gap-2">
+              <div *ngFor="let item of categories" class="col-lg-1 col-sm-3 col-4">
+                <a [routerLink]="['/products']" [queryParams]="{ q: 'category_id-'+item.id }"
+                  class="text-decoration-none text-center d-flex flex-column justify-content-center">
+                  <button type="button" class="btn btn-outline-secondary mx-auto p-3 mb-2"
+                    data-mdb-ripple-color="dark">
+                    <img [src]="imgBaseUrl + item.image" width="50" height="50" alt="" />
+                  </button>
+                  <div class="text-dark">{{ item.name }}</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+    <!-- category -->
+  </div>
+  <div class="mt-3 bg-white">
+    <div class="pt-2 pb-1 ps-3" style="background-color: #ddbcff">
+      <span class="fs-5 d-flex align-items-center gap-2" style="font-weight: 600"><i
+          class="fa-solid fa-fire" style="color: #ff8080"></i>SẢN PHẨM NỔI
+        BẬT</span>
+    </div>
+    <div class="py-2 gy-3">
+      <div class="row row-cols-5 py-3">
+        <div *ngFor="let book of booksFeatured" class="product">
+          <app-product-item [book]="book"></app-product-item>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3 bg-white">
+    <div class="pt-2 pb-1 ps-3" style="background-color: #87ceeb">
+      <span class="fs-5 d-flex align-items-center gap-2" style="font-weight: 600"><i
+          class="fa-solid fa-bomb" style="color: #000000"></i>SẢN PHẨM
+        MỚI</span>
+    </div>
+    <div class="py-2 gy-3">
+      <div class="row row-cols-5 py-3">
+        <div *ngFor="let book of booksNew" class="product">
+          <app-product-item [book]="book"></app-product-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

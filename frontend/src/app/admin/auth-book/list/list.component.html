@@ -1,0 +1,32 @@
+<a routerLink="/admin/authors/add" class="btn btn-primary">Thêm tác giả</a>
+<div class="row my-5">
+  <h3 class="fs-4 mb-3">Recent Orders</h3>
+  <div class="col">
+    <table class="table bg-white rounded shadow-sm table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="50">#</th>
+          <th scope="col">Tên tác giả</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let author of authors">
+          <th scope="row">{{ author.id }}</th>
+          <td>{{ author.name }}</td>
+          <td>
+            <button
+              class="btn btn-primary"
+              [routerLink]="['/admin/authors/edit', author.id]"
+            >
+              Sửa
+            </button>
+            <button class="btn btn-danger" (click)="onDelete(author.id)">
+              Xóa
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

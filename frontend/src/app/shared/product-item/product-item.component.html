@@ -1,0 +1,24 @@
+<div
+  [routerLink]="['/product', book?.id]"
+  routerLinkActive="router-link-active"
+  class="card border-0 product-card position-relative"
+>
+  <div
+    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong position-absolute top-0 end-0"
+    style="width: 35px; height: 35px"
+  >
+    <p class="text-white mb-0 small">{{ book?.discount }}%</p>
+  </div>
+  <img [src]="imgUrl + book?.image" class="card-img-top" alt="Laptop" />
+  <div class="card-body">
+    <p class="mb-0">{{ book?.title }}</p>
+    <p class="text-dark mb-0">{{ book?.price }}</p>
+
+    <p class="text-muted mb-0">
+      Available: <span class="fw-bold">{{ book?.quantity }}</span>
+    </p>
+    <div class="ms-auto text-warning">
+      <app-star-average [book]="book"></app-star-average>
+    </div>
+  </div>
+</div>
